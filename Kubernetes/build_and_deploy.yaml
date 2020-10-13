@@ -1,0 +1,13 @@
+---
+- hosts: all
+  become: true
+
+  tasks:
+  - name: Build Docker image
+    command: docker build -t web-project .
+    args:
+      chdir: /opt/docker
+  - name: Deploy image
+    command: docker run --name myimage -p 8080:8080 -d web-project
+    args:
+      chdir: /opt/docker
