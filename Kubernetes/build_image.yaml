@@ -1,0 +1,9 @@
+---
+- hosts: all
+  become: true
+
+  tasks:
+  - name: Build Docker image
+    command: docker build -t web-project .
+    args:
+      chdir: /opt/docker
