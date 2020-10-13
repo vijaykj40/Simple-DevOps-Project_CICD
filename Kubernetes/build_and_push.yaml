@@ -1,0 +1,24 @@
+---
+- hosts: all
+  become: true
+
+
+  tasks:
+  
+  - name: create a docker image with war file
+    command: docker build -t web-project:latest .
+  
+  - name: create a tag for image 
+    command: docker tag web-project vijaykj40/web-project
+
+  - name: login to docker 
+    docker_login:
+      username: vijaykj40
+      password: Dreamjob00!  
+
+  - name: push image to hub
+    command: docker push vijaykj40/web-project
+
+  - name: remove image from local
+    command: docker rmi web-project:latest vijaykj40/web-project
+    ignore_errors: yes
