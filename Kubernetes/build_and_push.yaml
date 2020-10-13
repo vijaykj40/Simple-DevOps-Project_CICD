@@ -14,7 +14,7 @@
   - name: login to docker 
     docker_login:
       username: vijaykj40
-      password: Dreamjob00!  
+      password: ******** 
 
   - name: push image to hub
     command: docker push vijaykj40/web-project
