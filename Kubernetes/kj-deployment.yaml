@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kj-deployment
+spec:
+  replicas: 2
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 1
+  selector:
+    matchLabels:
+      app: kj-devops-project
+  template:
+    metadata:
+      labels:
+        app: kj-devops-project
+    spec:
+      containers:
+      - name: kj-devops
+        image: vijaykj40/web-project
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 8080
