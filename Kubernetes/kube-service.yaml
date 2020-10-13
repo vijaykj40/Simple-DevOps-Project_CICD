@@ -1,0 +1,11 @@
+---
+- name: create service for deployment
+  hosts: kube
+  # become: true
+  user: ubuntu
+
+  tasks:
+  - name: create a service
+    command: kubectl apply -f kj-service.yaml
+    args:
+      chdir: /home/ubuntu/kubedata
